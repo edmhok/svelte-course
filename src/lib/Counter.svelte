@@ -1,23 +1,19 @@
 <script>
-  let count1 = 0;
-  let count2 = 0;
-  
-  function setCount2(x) {
-    return count2 = x;
-  }
+	export let initialCount = 0;  
+  export let maxCount = undefined;
 
-  $: setCount2(count1);
-  $: string = `Count2 is ${count2}.`;
+  console.log($$props, $$restProps);
 
-	function increment1() {
-		count1 += 1;			
+  let count = initialCount;
+
+	function increment() {
+		if (count === maxCount) return;
+		count += 1;		
 	}
 	
 </script>
 
-<button on:click={increment1}>Clicks {count1}</button>
-
-<h3>{string}</h3>
+<button on:click={increment}>Clicks {count}</button>
 
 <style>
 	button {
